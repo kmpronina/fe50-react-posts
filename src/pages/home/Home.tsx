@@ -1,6 +1,6 @@
-import Header from '#containers/header';
-import ListOfPosts from '#containers/ListOfPosts';
 import React from 'react';
+import Header from '#containers/header';
+import ListOfPosts from '#containers/listOfPosts';
 
 const Home = () => {
   return (

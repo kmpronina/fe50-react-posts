@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
+// import { ReactNode } from 'react';
 import styled from 'styled-components';
-import { PostModel } from '../../models/PostModel';
+// import { PostModel } from '../../models/PostModel';
 
-// export const ListOfPostsStyled = styled.div<{ children: PostModel[] }>``;
-export const ListOfPostsStyled = styled.div<{
-  children: PostModel[] | ReactNode;
-}>``;
+export const ListOfPostsStyled = styled.div<{ children: any }>`
+height: 700px
+background-color: #fff`;
