@@ -22,6 +22,7 @@ import {
   SaveArea,
   InteractionButton,
 } from './PostStyled';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 library.add(faThumbsUp, faThumbsDown, faBookmark, faEllipsis);
 
@@ -31,6 +32,7 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = (props) => {
   const { post } = props;
+  const navigation: NavigateFunction = useNavigate();
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -41,8 +43,17 @@ const Post: React.FC<PostProps> = (props) => {
     return new Date(dateString).toLocaleDateString([], options);
   };
 
+  const handleGoToPostPage = () => {
+    navigation(`${post.id}`);
+  };
+
   return (
-    <PostStyled id={post.id} variant={post.variant} key={post.id}>
+    <PostStyled
+      id={post.id}
+      variant={post.variant}
+      key={post.id}
+      onClick={handleGoToPostPage}
+    >
       <InfoArea variant={post.variant}>
         <TextArea variant={post.variant}>
           <DateContainer variant={post.variant}>

@@ -8,9 +8,9 @@ const ListOfPosts: React.FC = () => {
   return (
     <ListOfPostsStyled>
       <Post post={postsCardsMockArray[0]} />
-      {/* <Post post={postsCardsMockArray[1]} /> */}
+      <Post post={postsCardsMockArray[1]} />
       <Post post={postsCardsMockArray[2]} />
-      {/* <Post post={postsCardsMockArray[3]} /> */}
+      <Post post={postsCardsMockArray[3]} />
       <Post post={postsCardsMockArray[4]} />
 
       {/* {postsCardsMockArray.map((arrowItem) => {

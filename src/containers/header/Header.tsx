@@ -8,12 +8,12 @@ const Header = () => {
     {
       id: 1,
       href: ROUTES.HOME,
-      children: 'Home',
+      children: 'All posts',
     },
     {
       id: 2,
-      href: ROUTES.POST,
-      children: 'Post',
+      href: ROUTES.FAVPOSTS,
+      children: 'Favorite posts',
     },
   ];
 

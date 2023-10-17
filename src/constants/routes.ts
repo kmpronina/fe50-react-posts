@@ -1,4 +1,5 @@
 export const enum ROUTES {
   HOME = '/',
-  POST = 'post',
+  POST = '/:id',
+  FAVPOSTS = '/favoriteposts',
 }
