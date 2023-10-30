@@ -15,20 +15,22 @@ const PageWithOnePost: React.FC = () => {
     const postId = Number(
       location.pathname.split('/')[location.pathname.split('/').length - 1]
     );
-
     return postId;
   };
+
   return (
-    <PageWithOnePostStyled>
-      <ImgWrapper>
-        <img
-          src={postsCardsMockArray[getSelectedId() - 1].imgSrc}
-          alt="astronaut"
-        />
-      </ImgWrapper>
-      <PostTitle> {postsCardsMockArray[getSelectedId() - 1].title}</PostTitle>
-      <PostText>{postsCardsMockArray[getSelectedId() - 1].text}</PostText>
-    </PageWithOnePostStyled>
+    <>
+      <PageWithOnePostStyled>
+        <ImgWrapper>
+          <img
+            src={postsCardsMockArray[getSelectedId() - 1].imgSrc}
+            alt="astronaut"
+          />
+        </ImgWrapper>
+        <PostTitle> {postsCardsMockArray[getSelectedId() - 1].label}</PostTitle>
+        <PostText>{postsCardsMockArray[getSelectedId() - 1].text}</PostText>
+      </PageWithOnePostStyled>
+    </>
   );
 };
 

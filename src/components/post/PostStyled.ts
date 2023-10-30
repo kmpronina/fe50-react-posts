@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Button } from '@mui/material';
+// import { styled } from '@mui/system';
 
 export const PostStyled = styled.div<{
   id: any;
@@ -85,6 +87,7 @@ export const InteractionArea = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 5px;
 `;
 
 export const LikeArea = styled.div`
@@ -94,11 +97,12 @@ export const LikeArea = styled.div`
   align-items: center;
 `;
 
-export const InteractionButton = styled.button`
-  all: unset;
-  cursor: pointer;
-  margin: 5px;
-`;
+// export const InteractionButtonStyle = {
+//   // all: 'unset',
+//   // cursor: 'pointer',
+//   // margin: '5px',
+//   color: 'gray',
+// };
 
 export const SaveArea = styled.div`
   display: flex;

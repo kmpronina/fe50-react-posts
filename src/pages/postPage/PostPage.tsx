@@ -1,3 +1,4 @@
+import Header from '#containers/header';
 import PageWithOnePost from '#containers/pageWithOnePost';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -12,12 +13,15 @@ const PostPage = () => {
     const postId = Number(
       location.pathname.split('/')[location.pathname.split('/').length - 2]
     );
-    // console.log(postId);
     setPost(postsCardsMockArray.find((post) => post.id === postId));
   }, [location]);
-  // console.log(post);
 
-  return <PageWithOnePost />;
+  return (
+    <>
+      <Header />
+      <PageWithOnePost />
+    </>
+  );
 };
 
 export default PostPage;
