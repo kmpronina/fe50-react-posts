@@ -3,6 +3,7 @@ export type PostModel = {
   imgSrc: string;
   text: string;
   date: string;
-  title: string;
+  label: string;
   variant: 'large' | 'medium' | 'small';
+  isLiked: boolean;
 };

@@ -1,21 +1,34 @@
-import React from 'react';
-import { postsCardsMockArray } from '../../api/postsCardsMockArray';
-import Post from '#components/post';
-// import { ListOfPostsStyled } from './ListOfPostsStyled';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Post from '#components/post';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import { getPosts } from '#api/postService';
+import { setPostsToStore } from '../../store/reducers/postReducer/actions';
+import { PostModel } from '../../models/PostModel';
 
-const ListOfPosts: React.FC = () => {
+interface Props {}
+
+const ListOfPosts: React.FC<Props> = (props) => {
+  const dispatch = useAppDispatch();
+  const { posts } = useAppSelector((state) => state.postReducer);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const getData = async () => {
+      const data = await getPosts();
+      console.log('data', data);
+      dispatch(setPostsToStore(data));
+      setIsLoading(false);
+    };
+    getData();
+  }, [setIsLoading]);
+
   return (
     <ListOfPostsStyled>
-      <Post post={postsCardsMockArray[0]} />
-      <Post post={postsCardsMockArray[1]} />
-      <Post post={postsCardsMockArray[2]} />
-      <Post post={postsCardsMockArray[3]} />
-      <Post post={postsCardsMockArray[4]} />
-
-      {/* {postsCardsMockArray.map((arrowItem) => {
-        <Post post={arrowItem} key={arrowItem.id} />;
-      })} */}
+      {isLoading && `${'Getting posts...'}`}
+      {!isLoading && posts.map((post: PostModel) => <Post post={post} />)}
     </ListOfPostsStyled>
   );
 };

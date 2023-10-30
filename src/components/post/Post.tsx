@@ -8,6 +8,7 @@ import {
   faBookmark,
 } from '@fortawesome/free-regular-svg-icons';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import InteractionButton from './interactionButton/InteractionButton';
 import { PostModel } from '../../models/PostModel';
 import {
   PostStyled,
@@ -20,9 +21,13 @@ import {
   InteractionArea,
   LikeArea,
   SaveArea,
-  InteractionButton,
 } from './PostStyled';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import {
+  setFavoritePostsToStore,
+  setPostsToStore,
+} from '../../store/reducers/postReducer/actions';
 
 library.add(faThumbsUp, faThumbsDown, faBookmark, faEllipsis);
 
@@ -32,7 +37,9 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = (props) => {
   const { post } = props;
+  const { posts } = useAppSelector((state) => state.postReducer);
   const navigation: NavigateFunction = useNavigate();
+  const dispatch = useAppDispatch();
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -47,19 +54,24 @@ const Post: React.FC<PostProps> = (props) => {
     navigation(`${post.id}`);
   };
 
+  const handleToggleLikeStatus = (postId: number) => {
+    const newPosts: PostModel[] = [
+      ...posts.map((post) =>
+        post.id === postId ? { ...post, isLiked: !post.isLiked } : post
+      ),
+    ];
+    dispatch(setPostsToStore(newPosts));
+    dispatch(setFavoritePostsToStore(newPosts.filter((post) => post.isLiked)));
+  };
+
   return (
-    <PostStyled
-      id={post.id}
-      variant={post.variant}
-      key={post.id}
-      onClick={handleGoToPostPage}
-    >
-      <InfoArea variant={post.variant}>
+    <PostStyled id={post.id} variant={post.variant} key={post.id}>
+      <InfoArea variant={post.variant} onClick={handleGoToPostPage}>
         <TextArea variant={post.variant}>
           <DateContainer variant={post.variant}>
             {formatDate(post.date)}
           </DateContainer>
-          <TitleStyled variant={post.variant}>{post.title}</TitleStyled>
+          <TitleStyled variant={post.variant}>{post.label}</TitleStyled>
           <TextStyled variant={post.variant}>{post.text}</TextStyled>
         </TextArea>
         <ImageStyled variant={post.variant}>
@@ -80,7 +92,7 @@ const Post: React.FC<PostProps> = (props) => {
           </InteractionButton>
         </LikeArea>
         <SaveArea>
-          <InteractionButton>
+          <InteractionButton onClick={() => handleToggleLikeStatus(post.id)}>
             <FontAwesomeIcon
               icon={icon({ name: 'bookmark', style: 'regular' })}
             />

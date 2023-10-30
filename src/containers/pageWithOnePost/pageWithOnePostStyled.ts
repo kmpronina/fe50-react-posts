@@ -16,6 +16,7 @@ export const PostTitle = styled.h2<{
   children: ReactNode;
 }>`
   all: unset;
+  width: 65%;
   font-size: 24px;
   font-weight: 700;
   line-height: 36px;
@@ -24,7 +25,7 @@ export const PostTitle = styled.h2<{
 `;
 
 export const ImgWrapper = styled.div<{ children: ReactNode }>`
-  width: 90%;
+  width: 50%;
   & img {
     width: 100%;
     height: 100%;
@@ -33,6 +34,7 @@ export const ImgWrapper = styled.div<{ children: ReactNode }>`
 `;
 
 export const PostText = styled.div<{ children: ReactNode }>`
+  width: 75%;
   font-size: 16px;
   font-weight: 300;
 `;
