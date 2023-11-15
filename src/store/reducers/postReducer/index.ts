@@ -1,4 +1,4 @@
-import { Action, Reducer } from '@reduxjs/toolkit';
+import { Reducer } from '@reduxjs/toolkit';
 import { PostReducerEnum } from './actionTypes';
 import { PostModel } from '../../../models/PostModel';
 

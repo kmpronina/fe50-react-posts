@@ -1,12 +1,27 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 import postReducer from './reducers/postReducer';
+import { appWatcher } from './saga';
+import userReducer from './reducers/userReducer';
 
-const appReducer = combineReducers({ postReducer });
+const appReducer = combineReducers({ postReducer, userReducer });
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: appReducer,
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    sagaMiddleware,
+  ],
 });
+
+sagaMiddleware.run(appWatcher);
 
 export type AppStateType = ReturnType<typeof appReducer>;
 export type AppDispatchType = typeof store.dispatch;

@@ -1,22 +1,26 @@
-// export const getPost = async (postId: number) => {
-//   const response = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${postId}`
-//   );
-//   const data = await response.json();
-//   return data;
-// };
+import { PostModel, PostFromResponse, PostVariant } from '../models/PostModel';
 
-import { PostModel } from '../models/PostModel';
-import { postsCardsMockArray } from './postsCardsMockArray';
-
-export const getPosts = async () => {
-  const newPosts: PostModel[] = await new Promise((resolve) => {
-    const timer = setTimeout(() => {
-      resolve(postsCardsMockArray as PostModel[]);
-
-      clearTimeout(timer);
-    }, 500);
-  });
-
-  return newPosts;
+export const getPosts = async (): Promise<PostModel[]> => {
+  const raw = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data: PostFromResponse[] = await raw.json();
+  const rawDate = new Date();
+  const random = () => {
+    return Math.floor(Math.random() * 10);
+  };
+  const formatedData = data.map((post) => ({
+    userId: post.userId,
+    id: post.id,
+    imgSrc: 'https://random.imagecdn.app/1250/750',
+    text: post.body,
+    date: rawDate.toDateString(),
+    label: post.title,
+    isLiked: false,
+    variant:
+      random() > 4
+        ? PostVariant.VARIANT_SMALL
+        : random() > 8
+        ? PostVariant.VARIANT_LARGE
+        : PostVariant.VARIANT_MEDIUM,
+  }));
+  return formatedData;
 };

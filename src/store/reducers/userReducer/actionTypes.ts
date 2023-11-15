@@ -1,0 +1,5 @@
+export enum UserReducerEnum {
+  SET_USERS = 'SET_USERS',
+  GET_USERS_SAGA = 'GET_USERS_SAGA',
+  SET_SELECTED_USER = 'SET_SELECTED_USER',
+}

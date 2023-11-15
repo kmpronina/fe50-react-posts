@@ -30,7 +30,9 @@ const Autocomplete: React.FC<Props> = () => {
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-      renderInput={(params) => <TextField {...params} />}
+      renderInput={(params) => (
+        <TextField {...params} label="Search by post title" />
+      )}
     />
   );
 };

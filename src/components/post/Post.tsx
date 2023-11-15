@@ -5,11 +5,11 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import {
   faThumbsUp,
   faThumbsDown,
-  faBookmark,
+  faBookmark as faBookmarkRegular,
 } from '@fortawesome/free-regular-svg-icons';
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsis, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import InteractionButton from './interactionButton/InteractionButton';
-import { PostModel } from '../../models/PostModel';
+import { PostModel } from '#models/PostModel';
 import {
   PostStyled,
   InfoArea,
@@ -23,16 +23,23 @@ import {
   SaveArea,
 } from './PostStyled';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/store';
+import { useAppDispatch, useAppSelector } from '#store/store';
 import {
   setFavoritePostsToStore,
   setPostsToStore,
-} from '../../store/reducers/postReducer/actions';
+} from '#store/reducers/postReducer/actions';
 
-library.add(faThumbsUp, faThumbsDown, faBookmark, faEllipsis);
+library.add(
+  faThumbsUp,
+  faThumbsDown,
+  faBookmark,
+  faEllipsis,
+  faBookmarkRegular
+);
 
 interface PostProps {
   post: PostModel;
+  // variant: PostVariant;
 }
 
 const Post: React.FC<PostProps> = (props) => {
@@ -41,17 +48,8 @@ const Post: React.FC<PostProps> = (props) => {
   const navigation: NavigateFunction = useNavigate();
   const dispatch = useAppDispatch();
 
-  const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    };
-    return new Date(dateString).toLocaleDateString([], options);
-  };
-
   const handleGoToPostPage = () => {
-    navigation(`${post.id}`);
+    navigation(`/${post.id}`);
   };
 
   const handleToggleLikeStatus = (postId: number) => {
@@ -68,9 +66,7 @@ const Post: React.FC<PostProps> = (props) => {
     <PostStyled id={post.id} variant={post.variant} key={post.id}>
       <InfoArea variant={post.variant} onClick={handleGoToPostPage}>
         <TextArea variant={post.variant}>
-          <DateContainer variant={post.variant}>
-            {formatDate(post.date)}
-          </DateContainer>
+          <DateContainer variant={post.variant}>{post.date}</DateContainer>
           <TitleStyled variant={post.variant}>{post.label}</TitleStyled>
           <TextStyled variant={post.variant}>{post.text}</TextStyled>
         </TextArea>
@@ -93,9 +89,15 @@ const Post: React.FC<PostProps> = (props) => {
         </LikeArea>
         <SaveArea>
           <InteractionButton onClick={() => handleToggleLikeStatus(post.id)}>
-            <FontAwesomeIcon
-              icon={icon({ name: 'bookmark', style: 'regular' })}
-            />
+            {post.isLiked ? (
+              <FontAwesomeIcon
+                icon={icon({ name: 'bookmark', style: 'solid' })}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={icon({ name: 'bookmark', style: 'regular' })}
+              />
+            )}
           </InteractionButton>
           <InteractionButton>
             <FontAwesomeIcon

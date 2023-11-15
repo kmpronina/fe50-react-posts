@@ -5,11 +5,13 @@ import {
   ImgWrapper,
   PostText,
 } from './pageWithOnePostStyled';
-import { postsCardsMockArray } from '../../api/postsCardsMockArray';
+// import { postsCardsMockArray } from '../../api/postsCardsMockArray';
 import { useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../store/store';
 
 const PageWithOnePost: React.FC = () => {
   const location = useLocation();
+  const { posts } = useAppSelector((state) => state.postReducer);
 
   const getSelectedId = () => {
     const postId = Number(
@@ -22,13 +24,10 @@ const PageWithOnePost: React.FC = () => {
     <>
       <PageWithOnePostStyled>
         <ImgWrapper>
-          <img
-            src={postsCardsMockArray[getSelectedId() - 1].imgSrc}
-            alt="astronaut"
-          />
+          <img src={posts[getSelectedId() - 1].imgSrc} alt="astronaut" />
         </ImgWrapper>
-        <PostTitle> {postsCardsMockArray[getSelectedId() - 1].label}</PostTitle>
-        <PostText>{postsCardsMockArray[getSelectedId() - 1].text}</PostText>
+        <PostTitle> {posts[getSelectedId() - 1].label}</PostTitle>
+        <PostText>{posts[getSelectedId() - 1].text}</PostText>
       </PageWithOnePostStyled>
     </>
   );

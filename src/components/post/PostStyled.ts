@@ -1,71 +1,99 @@
 import styled from 'styled-components';
-import { Button } from '@mui/material';
+import { PostVariant } from '../../models/PostModel';
 // import { styled } from '@mui/system';
 
 export const PostStyled = styled.div<{
   id: any;
-  variant: 'large' | 'medium' | 'small';
+  variant: PostVariant;
 }>`
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ variant }) => (variant === 'small' ? '10px' : '15px')};
-  margin: 15px;
+  padding: ${({ variant }) =>
+    variant === PostVariant.VARIANT_SMALL ? '10px' : '15px'};
+  /* margin: 15px; */
   border-radius: 5px;
   width: ${({ variant }) =>
-    variant === 'large' ? '750px' : variant === 'medium' ? '375px' : '250px'};
+    variant === PostVariant.VARIANT_LARGE
+      ? '750px'
+      : variant === PostVariant.VARIANT_MEDIUM
+      ? '350px'
+      : '250px'};
 `;
 
 export const InfoArea = styled.div<{
-  variant: 'large' | 'medium' | 'small';
+  variant: PostVariant;
 }>`
   display: flex;
   flex-direction: ${({ variant }) =>
-    variant === 'medium' ? 'column-reverse' : 'row'};
+    variant === PostVariant.VARIANT_MEDIUM ? 'column-reverse' : 'row'};
   justify-content: space-between;
   align-items: center;
 `;
 
 export const TextArea = styled.div<{
-  variant: 'large' | 'medium' | 'small';
+  variant: PostVariant;
 }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
   width: ${({ variant }) =>
-    variant === 'large' ? '60%' : variant === 'medium' ? '90%' : '70%'};
+    variant === PostVariant.VARIANT_LARGE
+      ? '60%'
+      : variant === PostVariant.VARIANT_MEDIUM
+      ? '90%'
+      : '155px'};
 `;
 
 export const TitleStyled = styled.h2<{
-  variant: 'large' | 'medium' | 'small';
+  variant: PostVariant;
 }>`
   all: unset;
   font-size: ${({ variant }) =>
-    variant === 'large' ? '24px' : variant === 'medium' ? '18px' : '12px'};
+    variant === PostVariant.VARIANT_LARGE
+      ? '24px'
+      : variant === PostVariant.VARIANT_MEDIUM
+      ? '18px'
+      : '10px'};
   font-weight: ${({ variant }) =>
-    variant === 'large' ? '700' : variant === 'medium' ? '700' : '500'};
+    variant === PostVariant.VARIANT_LARGE
+      ? '700'
+      : variant === PostVariant.VARIANT_MEDIUM
+      ? '700'
+      : '500'};
   color: #000;
+
   margin: 15px 0;
 `;
 
-export const TextStyled = styled.p<{ variant: 'large' | 'medium' | 'small' }>`
+export const TextStyled = styled.p<{ variant: PostVariant }>`
   all: unset;
-  display: ${({ variant }) => (variant === 'large' ? 'block' : 'none')};
+  display: ${({ variant }) =>
+    variant === PostVariant.VARIANT_LARGE ? 'block' : 'none'};
   font-size: 14px;
   color: gray;
 `;
 
 export const ImageStyled = styled.div<{
-  variant: 'large' | 'medium' | 'small';
+  variant: PostVariant;
 }>`
   width: ${({ variant }) =>
-    variant === 'large' ? '250px' : variant === 'medium' ? '350px' : '75px'};
+    variant === PostVariant.VARIANT_LARGE
+      ? '250px'
+      : variant === PostVariant.VARIANT_MEDIUM
+      ? '350px'
+      : '75px'};
   height: ${({ variant }) =>
-    variant === 'large' ? '250px' : variant === 'medium' ? '300px' : '75px'};
-  margin-bottom: ${({ variant }) => (variant === 'medium' ? '10px' : '0')};
+    variant === PostVariant.VARIANT_LARGE
+      ? '250px'
+      : variant === PostVariant.VARIANT_MEDIUM
+      ? '300px'
+      : '75px'};
+  margin-bottom: ${({ variant }) =>
+    variant === PostVariant.VARIANT_MEDIUM ? '10px' : '0'};
   & img {
     width: 100%;
     height: 100%;
@@ -74,7 +102,7 @@ export const ImageStyled = styled.div<{
 `;
 
 export const DateContainer = styled.span<{
-  variant: 'large' | 'medium' | 'small';
+  variant: PostVariant;
 }>`
   all: unset;
   font-size: 14px;
