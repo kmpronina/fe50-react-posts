@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-// import { PostModel } from '../../models/PostModel';
 
 interface Props extends PropsWithChildren {
   children: ReactNode;

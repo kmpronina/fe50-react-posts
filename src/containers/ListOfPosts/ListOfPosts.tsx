@@ -15,6 +15,7 @@ interface Props {}
 
 const ListOfPosts: React.FC<Props> = (props) => {
   const { posts } = useAppSelector((state) => state.postReducer);
+  // const { comments } = useAppSelector((state) => state.commentReducer);
   const { selectedUserId } = useAppSelector((state) => state.userReducer);
   const [postsToShow, setPostsToShow] = useState<PostModel[]>([]);
 
@@ -31,10 +32,6 @@ const ListOfPosts: React.FC<Props> = (props) => {
   //   getData();
   // }, [setIsLoading]);
 
-  // useEffect(() => {
-  //   dispatch(getPostsSaga());
-  // }, []);
-
   useEffect(() => {
     setPostsToShow(
       posts.filter((post: PostModel) =>
@@ -43,8 +40,8 @@ const ListOfPosts: React.FC<Props> = (props) => {
     );
   }, [selectedUserId, posts]);
 
-  // const hanldeButtonClick = () => {
-  //   console.log(favoritePosts);
+  // const handleCklick = () => {
+  //   console.log(posts);
   // };
 
   return (
@@ -52,7 +49,7 @@ const ListOfPosts: React.FC<Props> = (props) => {
       {/* {isLoading && `${'Getting posts...'}`}
       {!isLoading && ( */}
       <ListOfPostsLeftArea>
-        {/* <Button onClick={hanldeButtonClick}>Button</Button> */}
+        {/* <Button onClick={handleCklick}>Click me</Button> */}
         <MainPost>
           {postsToShow
             .filter(

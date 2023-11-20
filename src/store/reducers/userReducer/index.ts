@@ -1,5 +1,5 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { UserModel } from '../../../models/UserModel';
+import { UserModel } from '#models/UserModel';
 import { UserReducerEnum } from './actionTypes';
 
 type UsersReducerType = {

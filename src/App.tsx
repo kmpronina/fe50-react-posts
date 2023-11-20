@@ -5,16 +5,14 @@ import './App.css';
 // import { getPosts } from './api/postService';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import ProviderWrapper from '#containers/providerWrapper';
 
 function App() {
-  // const logPOst = async (postId: number) => {
-  //   const data = await getPosts(postId);
-  //   console.log(data);
-  // };
-  // logPOst(1);
   return (
     <Provider store={store}>
-      <RouterProvider router={appRouter} />
+      <ProviderWrapper>
+        <RouterProvider router={appRouter} />
+      </ProviderWrapper>
     </Provider>
   );
 }

@@ -4,12 +4,13 @@ import styled from 'styled-components';
 export const PageWithOnePostStyled = styled.div<{
   children: ReactNode;
 }>`
-  padding: 0 20px;
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
+  margin-bottom: 50px;
 `;
 
 export const PostTitle = styled.h2<{
@@ -37,4 +38,5 @@ export const PostText = styled.div<{ children: ReactNode }>`
   width: 75%;
   font-size: 16px;
   font-weight: 300;
+  margin-bottom: 50px;
 `;

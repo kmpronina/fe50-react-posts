@@ -1,6 +1,6 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { PostReducerEnum } from './actionTypes';
-import { PostModel } from '../../../models/PostModel';
+import { PostModel } from '#models/PostModel';
 
 type PostReducerType = {
   posts: PostModel[];

@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { styled } from '@mui/material/styles';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ArticleIcon from '@mui/icons-material/Article';
 import { UserName } from '#components/UserName';
 import { UserModel } from '#models/UserModel';
 import { useAppDispatch, useAppSelector } from '#store/store';
 import {
   ListOfUsersStyled,
   UserStyled,
-  PostsCounterStyled,
+  // PostsCounterStyled,
 } from './ListOfUsersStyled';
-import { getUsersSaga } from '#store/saga/usersSaga';
 import { setSelectedUserById } from '#store/reducers/userReducer/actions';
 import { PostModel } from '#models/PostModel';
+import { Badge, BadgeProps } from '@mui/material';
 
 const ListOfUsers: React.FC = () => {
   const { users, selectedUserId } = useAppSelector(
@@ -23,10 +27,6 @@ const ListOfUsers: React.FC = () => {
     null
   );
 
-  useEffect(() => {
-    dispatch(getUsersSaga());
-  }, []);
-
   const handleSelectUser = (userId: number) => {
     if (selectedUserId === userId) {
       setSelectedUserIdState(null);
@@ -39,6 +39,15 @@ const ListOfUsers: React.FC = () => {
     }
   };
 
+  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: '0 4px',
+    },
+  }));
+
   return (
     <ListOfUsersStyled>
       {users.map((user: UserModel) => (
@@ -48,7 +57,27 @@ const ListOfUsers: React.FC = () => {
           onClick={() => handleSelectUser(user.id)}
         >
           <UserName name={user.name} />
-          <PostsCounterStyled>
+
+          <StyledBadge
+            badgeContent={
+              posts.filter((post: PostModel) => post.userId === user.id).length
+            }
+            color="primary"
+          >
+            <ArticleIcon />
+          </StyledBadge>
+
+          <StyledBadge
+            badgeContent={
+              favoritePosts.filter((post: PostModel) => post.userId === user.id)
+                .length
+            }
+            color="primary"
+          >
+            <FavoriteBorderIcon />
+          </StyledBadge>
+
+          {/* <PostsCounterStyled>
             <>
               {' '}
               -{' '}
@@ -63,7 +92,7 @@ const ListOfUsers: React.FC = () => {
                 ).length
               }
             </>
-          </PostsCounterStyled>
+          </PostsCounterStyled> */}
         </UserStyled>
       ))}
     </ListOfUsersStyled>

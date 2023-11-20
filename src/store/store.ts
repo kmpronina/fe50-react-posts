@@ -8,8 +8,13 @@ import createSagaMiddleware from 'redux-saga';
 import postReducer from './reducers/postReducer';
 import { appWatcher } from './saga';
 import userReducer from './reducers/userReducer';
+import commentReducer from './reducers/commentReducer';
 
-const appReducer = combineReducers({ postReducer, userReducer });
+const appReducer = combineReducers({
+  postReducer,
+  userReducer,
+  commentReducer,
+});
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { PostVariant } from '../../models/PostModel';
+import { PostVariant } from '#models/PostModel';
 // import { styled } from '@mui/system';
 
-export const PostStyled = styled.div<{
+export const PostStyled = styled.article<{
   id: any;
   variant: PostVariant;
 }>`

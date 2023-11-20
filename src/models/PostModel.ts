@@ -1,7 +1,7 @@
 export type PostModel = {
   userId: number;
   id: number;
-  imgSrc?: string;
+  imgSrc?: any;
   text: string;
   date: string;
   label: string;

@@ -1,4 +1,5 @@
 import React from 'react';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
@@ -28,6 +29,8 @@ import {
   setFavoritePostsToStore,
   setPostsToStore,
 } from '#store/reducers/postReducer/actions';
+import { Badge } from '@mui/material';
+import { CommentModel } from '#models/CommentModel';
 
 library.add(
   faThumbsUp,
@@ -45,6 +48,7 @@ interface PostProps {
 const Post: React.FC<PostProps> = (props) => {
   const { post } = props;
   const { posts } = useAppSelector((state) => state.postReducer);
+  const { comments } = useAppSelector((state) => state.commentReducer);
   const navigation: NavigateFunction = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -100,9 +104,19 @@ const Post: React.FC<PostProps> = (props) => {
             )}
           </InteractionButton>
           <InteractionButton>
-            <FontAwesomeIcon
-              icon={icon({ name: 'ellipsis', style: 'solid' })}
-            />
+            <Badge
+              badgeContent={
+                comments.filter(
+                  (comment: CommentModel) => comment.postId === post.id
+                ).length
+              }
+              color="primary"
+            >
+              <ChatBubbleOutlineIcon
+                sx={{ width: '18px', height: '18px' }}
+                color="action"
+              />
+            </Badge>
           </InteractionButton>
         </SaveArea>
       </InteractionArea>

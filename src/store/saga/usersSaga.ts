@@ -1,10 +1,7 @@
-import { getUsers } from '#api/userService';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { UserModel } from '../../models/UserModel';
-import {
-  setSelectedUserById,
-  setUsersToStore,
-} from '../reducers/userReducer/actions';
+import { getUsers } from '#api/userService';
+import { UserModel } from '#models/UserModel';
+import { setUsersToStore } from '../reducers/userReducer/actions';
 import { UserReducerEnum } from '../reducers/userReducer/actionTypes';
 
 export const getUsersSaga = () => ({ type: UserReducerEnum.GET_USERS_SAGA });
