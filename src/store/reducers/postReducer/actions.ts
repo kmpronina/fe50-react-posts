@@ -19,6 +19,7 @@ export const setFavoritePostsToStore = (favoritePosts: PostModel[]) => {
   return { type: PostReducerEnum.SET_FAVORITE_POSTS, favoritePosts };
 };
 
-export const setSelectedPostById = (selectedPost: PostModel) => {
-  return { type: PostReducerEnum.SET_SELECTED_POST, selectedPost };
+export const setSelectedPostById = (selectedPostId: number) => {
+  console.log('id from reducer', selectedPostId);
+  return { type: PostReducerEnum.SET_SELECTED_POST, selectedPostId };
 };

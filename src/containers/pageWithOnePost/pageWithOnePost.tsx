@@ -22,7 +22,9 @@ import { saveComment } from '#api/commentService';
 
 const PageWithOnePost: React.FC = () => {
   const location = useLocation();
-  const { posts } = useAppSelector((state) => state.postReducer);
+  const { posts, selectedPostId } = useAppSelector(
+    (state) => state.postReducer
+  );
   const { comments } = useAppSelector((state) => state.commentReducer);
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -32,11 +34,16 @@ const PageWithOnePost: React.FC = () => {
   const [commentBodyValue, setCommentBodyValue] = useState<string>('');
 
   const getSelectedId = () => {
-    const postId = Number(
-      location.pathname.split('/')[location.pathname.split('/').length - 1]
-    );
-    return postId - 1;
+    if (selectedPostId) {
+      return selectedPostId - 1;
+    } else {
+      const postId = Number(
+        location.pathname.split('/')[location.pathname.split('/').length]
+      );
+      return postId - 1;
+    }
   };
+
   const handleChangeCommentEmail = (e: BaseSyntheticEvent) => {
     setCommentEmailValue(e.target.value);
   };
@@ -72,6 +79,9 @@ const PageWithOnePost: React.FC = () => {
   return (
     <>
       <PageWithOnePostStyled>
+        <Button onClick={() => console.log(posts[getSelectedId()].id)}>
+          Click me
+        </Button>
         <ImgWrapper>
           <img src={posts[getSelectedId()].imgSrc} alt="astronaut" />
         </ImgWrapper>

@@ -17,9 +17,9 @@ export const PostStyled = styled.article<{
   border-radius: 5px;
   width: ${({ variant }) =>
     variant === PostVariant.VARIANT_LARGE
-      ? '750px'
+      ? '700px'
       : variant === PostVariant.VARIANT_MEDIUM
-      ? '350px'
+      ? '250px'
       : '250px'};
 `;
 
@@ -45,7 +45,7 @@ export const TextArea = styled.div<{
       ? '60%'
       : variant === PostVariant.VARIANT_MEDIUM
       ? '90%'
-      : '155px'};
+      : '125px'};
 `;
 
 export const TitleStyled = styled.h2<{
@@ -84,13 +84,13 @@ export const ImageStyled = styled.div<{
     variant === PostVariant.VARIANT_LARGE
       ? '250px'
       : variant === PostVariant.VARIANT_MEDIUM
-      ? '350px'
+      ? '225px'
       : '75px'};
   height: ${({ variant }) =>
     variant === PostVariant.VARIANT_LARGE
       ? '250px'
       : variant === PostVariant.VARIANT_MEDIUM
-      ? '300px'
+      ? '200px'
       : '75px'};
   margin-bottom: ${({ variant }) =>
     variant === PostVariant.VARIANT_MEDIUM ? '10px' : '0'};

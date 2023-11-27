@@ -21,3 +21,5 @@ export enum PostVariant {
   VARIANT_MEDIUM = 'VARIANT_MEDIUM',
   VARIANT_LARGE = 'VARIANT_LARGE',
 }
+
+// selectedId переписать в стоор, убрать mui from pageWithOnePost

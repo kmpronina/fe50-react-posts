@@ -28,6 +28,7 @@ import { useAppDispatch, useAppSelector } from '#store/store';
 import {
   setFavoritePostsToStore,
   setPostsToStore,
+  setSelectedPostById,
 } from '#store/reducers/postReducer/actions';
 import { Badge } from '@mui/material';
 import { CommentModel } from '#models/CommentModel';
@@ -53,6 +54,8 @@ const Post: React.FC<PostProps> = (props) => {
   const dispatch = useAppDispatch();
 
   const handleGoToPostPage = () => {
+    console.log('id from postClick', post.id);
+    dispatch(setSelectedPostById(post.id));
     navigation(`/${post.id}`);
   };
 
@@ -71,11 +74,14 @@ const Post: React.FC<PostProps> = (props) => {
       <InfoArea variant={post.variant} onClick={handleGoToPostPage}>
         <TextArea variant={post.variant}>
           <DateContainer variant={post.variant}>{post.date}</DateContainer>
-          <TitleStyled variant={post.variant}>{post.label}</TitleStyled>
+          <TitleStyled variant={post.variant}>
+            {post.label}
+            {post.id}
+          </TitleStyled>
           <TextStyled variant={post.variant}>{post.text}</TextStyled>
         </TextArea>
         <ImageStyled variant={post.variant}>
-          <img src={post.imgSrc} alt="astronaut" />
+          <img src={post.imgSrc} alt="random pic" />
         </ImageStyled>
       </InfoArea>
       <InteractionArea>

@@ -5,13 +5,13 @@ import { PostModel } from '#models/PostModel';
 type PostReducerType = {
   posts: PostModel[];
   favoritePosts: PostModel[];
-  selectedPost: PostModel | undefined;
+  selectedPostId: number | undefined;
 };
 
 const defaultState: PostReducerType = {
   posts: [],
   favoritePosts: [],
-  selectedPost: undefined,
+  selectedPostId: undefined,
 };
 
 const postReducer: Reducer<PostReducerType> = (
@@ -30,7 +30,7 @@ const postReducer: Reducer<PostReducerType> = (
   if (action.type === PostReducerEnum.SET_SELECTED_POST) {
     return {
       ...state,
-      selectedPost: action.selectedPost,
+      selectedPostId: action.selectedPostId,
     };
   } else return { ...state };
 };
