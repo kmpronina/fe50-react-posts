@@ -54,7 +54,6 @@ const Post: React.FC<PostProps> = (props) => {
   const dispatch = useAppDispatch();
 
   const handleGoToPostPage = () => {
-    console.log('id from postClick', post.id);
     dispatch(setSelectedPostById(post.id));
     navigation(`/${post.id}`);
   };

@@ -20,6 +20,5 @@ export const setFavoritePostsToStore = (favoritePosts: PostModel[]) => {
 };
 
 export const setSelectedPostById = (selectedPostId: number) => {
-  console.log('id from reducer', selectedPostId);
   return { type: PostReducerEnum.SET_SELECTED_POST, selectedPostId };
 };

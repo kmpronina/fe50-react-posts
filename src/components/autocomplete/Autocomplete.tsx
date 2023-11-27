@@ -16,7 +16,6 @@ const Autocomplete: React.FC = () => {
 
   useEffect(() => {
     if (!value) return;
-    console.log('id from autocomplete', value.id);
     dispatch(setSelectedPostById(value.id));
     navigation(`/${value.id}`);
   }, [value]);

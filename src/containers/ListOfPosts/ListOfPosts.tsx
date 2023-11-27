@@ -40,16 +40,11 @@ const ListOfPosts: React.FC<Props> = (props) => {
     );
   }, [selectedUserId, posts]);
 
-  // const handleCklick = () => {
-  //   console.log(posts);
-  // };
-
   return (
     <ListOfPostsStyled>
       {/* {isLoading && `${'Getting posts...'}`}
       {!isLoading && ( */}
       <ListOfPostsLeftArea>
-        {/* <Button onClick={handleCklick}>Click me</Button> */}
         <MainPost>
           {postsToShow
             .filter(
