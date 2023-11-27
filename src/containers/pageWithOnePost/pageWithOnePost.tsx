@@ -79,9 +79,6 @@ const PageWithOnePost: React.FC = () => {
   return (
     <>
       <PageWithOnePostStyled>
-        <Button onClick={() => console.log(posts[getSelectedId()].id)}>
-          Click me
-        </Button>
         <ImgWrapper>
           <img src={posts[getSelectedId()].imgSrc} alt="astronaut" />
         </ImgWrapper>
