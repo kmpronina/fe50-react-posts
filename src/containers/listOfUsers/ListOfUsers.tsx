@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ArticleIcon from '@mui/icons-material/Article';
-import { UserName } from '#components/UserName';
+import { Badge, BadgeProps } from '@mui/material';
 import { UserModel } from '#models/UserModel';
 import { useAppDispatch, useAppSelector } from '#store/store';
-import {
-  ListOfUsersStyled,
-  UserStyled,
-  // PostsCounterStyled,
-} from './ListOfUsersStyled';
+import { ListOfUsersStyled, UserStyled } from './ListOfUsersStyled';
 import { setSelectedUserById } from '#store/reducers/userReducer/actions';
 import { PostModel } from '#models/PostModel';
-import { Badge, BadgeProps } from '@mui/material';
+import UserName from '#components/userName';
 
 const ListOfUsers: React.FC = () => {
   const { users, selectedUserId } = useAppSelector(
@@ -76,23 +71,6 @@ const ListOfUsers: React.FC = () => {
           >
             <FavoriteBorderIcon />
           </StyledBadge>
-
-          {/* <PostsCounterStyled>
-            <>
-              {' '}
-              -{' '}
-              {
-                posts.filter((post: PostModel) => post.userId === user.id)
-                  .length
-              }
-              /
-              {
-                favoritePosts.filter(
-                  (post: PostModel) => post.userId === user.id
-                ).length
-              }
-            </>
-          </PostsCounterStyled> */}
         </UserStyled>
       ))}
     </ListOfUsersStyled>

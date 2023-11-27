@@ -1,14 +1,5 @@
 import React, { BaseSyntheticEvent, useState } from 'react';
-import {
-  PageWithOnePostStyled,
-  PostTitle,
-  ImgWrapper,
-  PostText,
-} from './pageWithOnePostStyled';
-// import { postsCardsMockArray } from '../../api/postsCardsMockArray';
 import { useLocation } from 'react-router-dom';
-import { useAppSelector } from '#store/store';
-import Comments from '#components/comments';
 import {
   Button,
   Dialog,
@@ -18,6 +9,14 @@ import {
   DialogActions,
   TextField,
 } from '@mui/material';
+import {
+  PageWithOnePostStyled,
+  PostTitle,
+  ImgWrapper,
+  PostText,
+} from './pageWithOnePostStyled';
+import { useAppSelector } from '#store/store';
+import Comments from '#components/comments';
 import { saveComment } from '#api/commentService';
 
 const PageWithOnePost: React.FC = () => {

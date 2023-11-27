@@ -1,8 +1,8 @@
 import React from 'react';
-import Post from '#components/post';
-import { useAppSelector } from '../../store/store';
+import { useAppSelector } from '#store/store';
 import { ListOfFavoritePostsStyled } from './ListOfFavoritePostsStyled';
-import { PostModel, PostVariant } from '../../models/PostModel';
+import { PostModel } from '#models/PostModel';
+import Post from '#components/post';
 
 interface Props {}
 

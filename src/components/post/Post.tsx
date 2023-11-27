@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { Badge } from '@mui/material';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -20,17 +22,14 @@ import {
   TextStyled,
   ImageStyled,
   InteractionArea,
-  LikeArea,
   SaveArea,
 } from './PostStyled';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '#store/store';
 import {
   setFavoritePostsToStore,
   setPostsToStore,
   setSelectedPostById,
 } from '#store/reducers/postReducer/actions';
-import { Badge } from '@mui/material';
 import { CommentModel } from '#models/CommentModel';
 
 library.add(
@@ -73,10 +72,7 @@ const Post: React.FC<PostProps> = (props) => {
       <InfoArea variant={post.variant} onClick={handleGoToPostPage}>
         <TextArea variant={post.variant}>
           <DateContainer variant={post.variant}>{post.date}</DateContainer>
-          <TitleStyled variant={post.variant}>
-            {post.label}
-            {post.id}
-          </TitleStyled>
+          <TitleStyled variant={post.variant}>{post.label}</TitleStyled>
           <TextStyled variant={post.variant}>{post.text}</TextStyled>
         </TextArea>
         <ImageStyled variant={post.variant}>
@@ -84,7 +80,7 @@ const Post: React.FC<PostProps> = (props) => {
         </ImageStyled>
       </InfoArea>
       <InteractionArea>
-        <LikeArea>
+        {/* <LikeArea>
           <InteractionButton>
             <FontAwesomeIcon
               icon={icon({ name: 'thumbs-up', style: 'regular' })}
@@ -95,7 +91,7 @@ const Post: React.FC<PostProps> = (props) => {
               icon={icon({ name: 'thumbs-down', style: 'regular' })}
             />
           </InteractionButton>
-        </LikeArea>
+        </LikeArea> */}
         <SaveArea>
           <InteractionButton onClick={() => handleToggleLikeStatus(post.id)}>
             {post.isLiked ? (

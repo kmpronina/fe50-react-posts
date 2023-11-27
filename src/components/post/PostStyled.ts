@@ -3,7 +3,7 @@ import { PostVariant } from '#models/PostModel';
 // import { styled } from '@mui/system';
 
 export const PostStyled = styled.article<{
-  id: any;
+  id: number | undefined;
   variant: PostVariant;
 }>`
   background-color: #f5f5f5;
@@ -113,17 +113,17 @@ export const InteractionArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   padding: 5px;
 `;
 
-export const LikeArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
+// export const LikeArea = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+// `;
 
 // export const InteractionButtonStyle = {
 //   // all: 'unset',

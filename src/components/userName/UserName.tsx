@@ -5,7 +5,7 @@ interface Props {
   name: string;
   onClick?: () => void;
 }
-export const UserName: React.FC<Props> = (props) => {
+const UserName: React.FC<Props> = (props) => {
   const { name, onClick } = props;
   function stringToColor(string: string) {
     let hash = 0;
@@ -51,3 +51,5 @@ export const UserName: React.FC<Props> = (props) => {
     </Typography>
   );
 };
+
+export default UserName;

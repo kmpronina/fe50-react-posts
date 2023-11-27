@@ -20,8 +20,3 @@ export const UserStyled = styled.div<{ isSelected: boolean }>`
     isSelected === true ? '#f0f8ff' : ''};
   border-radius: 10px;
 `;
-
-export const PostsCounterStyled = styled.span`
-  font-size: 12px;
-  color: gray;
-`;

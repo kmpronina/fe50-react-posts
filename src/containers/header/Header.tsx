@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Drawer,
   IconButton,
@@ -8,7 +9,6 @@ import {
   Toolbar,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from 'react-router-dom';
 import { ROUTES } from '#constants/routes';
 import { HeaderStyled } from './HeaderStyled';
 import Autocomplete from '#components/autocomplete';

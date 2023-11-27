@@ -8,13 +8,11 @@ import {
   CommentBody,
   CommentsStyled,
 } from './CommentStyled';
-// import { useAppSelector } from '#store/store';
 
 interface Props {
   comments: CommentModel[];
 }
 const Comments: React.FC<Props> = (props) => {
-  // const { comments } = useAppSelector((state) => state.commentReducer);
   const { comments } = props;
 
   return (

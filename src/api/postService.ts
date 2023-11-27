@@ -1,21 +1,5 @@
 import { PostModel, PostFromResponse, PostVariant } from '#models/PostModel';
 
-// type PhotoType = {
-//   albumId: number;
-//   id: number;
-//   title: string;
-//   url: string;
-//   thumbnailUrl: string;
-// };
-
-// const getPhoto = async (photoId: number) => {
-//   const response = await fetch(
-//     `https://jsonplaceholder.typicode.com/photos/${photoId}`
-//   );
-//   const data: PhotoType = await response.json();
-//   return data.url;
-// };
-
 export const getPosts = async (): Promise<PostModel[]> => {
   const raw = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data: PostFromResponse[] = await raw.json();

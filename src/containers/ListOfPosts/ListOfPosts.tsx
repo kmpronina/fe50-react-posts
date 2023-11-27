@@ -9,13 +9,11 @@ import {
   MainPost,
   MediumPosts,
 } from './ListOfPostsStyled';
-// import { Button } from '@mui/material';
 
 interface Props {}
 
 const ListOfPosts: React.FC<Props> = (props) => {
   const { posts } = useAppSelector((state) => state.postReducer);
-  // const { comments } = useAppSelector((state) => state.commentReducer);
   const { selectedUserId } = useAppSelector((state) => state.userReducer);
   const [postsToShow, setPostsToShow] = useState<PostModel[]>([]);
 
