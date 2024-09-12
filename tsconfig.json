@@ -22,7 +22,9 @@
       "#containers/*": ["./src/containers/*"],
       "#router/*": ["./src/router/*"],
       "#api/*": ["./src/api/*"],
-      "#pages/*": ["./src/pages/*"]
+      "#pages/*": ["./src/pages/*"],
+      "#models/*": ["./src/models/*"],
+      "#store/*": ["./src/store/*"]
     }
   },
   "include": ["src"]
